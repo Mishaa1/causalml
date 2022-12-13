@@ -222,7 +222,7 @@ class DragonNet:
             y,
             callbacks=sgd_callbacks,
             validation_split=self.val_split,
-            epochs=300,
+            epochs=20,
             batch_size=self.batch_size,
             verbose=self.verbose,
         )
