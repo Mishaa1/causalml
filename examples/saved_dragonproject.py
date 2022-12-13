@@ -55,6 +55,11 @@ plt.style.use('fivethirtyeight')
 sns.set_palette('Paired')
 plt.rcParams['figure.figsize'] = (12,8)
 
+# random sampling of the dataset for confidence intervals
+# random.seed(42)
+# df = pd.read_csv(f'data/ars_jvm_cut.csv', 
+#            skiprows=lambda x: x > 0 and random.random() >=0.05)
+
 df = pd.read_csv(f'data/ars_jvm_cut.csv', header=1)
 cols =  ["match", "term", "range","fuzzy", "prefix", "wildcard", "bool", "match_all", "exists",  "request_length", "num_keys","outstandingRequests","responseTime", "serviceTime", "treated", "cpu", "memory", "jvm_memory"] 
 df.columns = cols
@@ -70,10 +75,7 @@ df.head()
 
 pd.Series(df['treated']).value_counts(normalize=True)
 
-y = df['y_factual']
-tau = df.apply(lambda d: d['y_factual'] - d['y_cfactual'] if d['treatment']==1 
-               else d['y_cfactual'] - d['y_factual'], 
-               axis=1)
+
 
 X = df.loc[:,'match': 'serviceTime']
 X
