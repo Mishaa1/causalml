@@ -11,22 +11,15 @@ Original file is located at
 # %reload_ext autoreload
 # %autoreload 2
 
-from google.colab import drive
-drive.mount("/content/gdrive")
-
-! ls
 
 # Commented out IPython magic to ensure Python compatibility.
 # %cd gdrive/My Drive/causal_project
 
-! git clone https://github.com/uber/causalml.git
 
 # Commented out IPython magic to ensure Python compatibility.
 # %cd causalml
 
-!pip install -r requirements.txt
 
-!pip install causalml
 
 # Commented out IPython magic to ensure Python compatibility.
 import pandas as pd
@@ -67,7 +60,6 @@ cols =  ["match", "term", "range","fuzzy", "prefix", "wildcard", "bool", "match_
 df.columns = cols
 cols
 
-! ls
 
 df.shape
 
@@ -139,5 +131,3 @@ model_save_name = 'dragon.pt'
 path = F"{model_save_name}" 
 
 dragon_ite.tofile(path)
-
-!ls
